@@ -1,5 +1,5 @@
 # node-api-boilerplate
-My preferred node API boilerplate.
+Node API boilerplate.
 
 ⚡node ⚡koa ⚡knex
 
