@@ -11,8 +11,10 @@ const cors = require('@koa/cors')
 const bodyparser = require('koa-bodyparser')
 
 const testRoute = require('./src/resources/test/route')
+const authRoute = require('./src/resources/auth/route')
 
 testRoute({ router })
+authRoute({ router })
 
 app.use(cors())
 app.use(bodyparser())
