@@ -15,7 +15,7 @@ module.exports = {
       const exist = await authHelper.find({ body: { username: request.username } })
 
       if (exist) {
-        ctx.body = 'user already exist'
+        ctx.body = 'Username is already used'
         ctx.status = 403
         return
       }
@@ -23,7 +23,7 @@ module.exports = {
       const response = await authService.store({ body: request })
 
       if (response) {
-        ctx.body = 'registration succesful'
+        ctx.body = 'Registration completed!'
       }
     } catch (error) {
       ctx.body = error
@@ -37,13 +37,14 @@ module.exports = {
       const user = await authHelper.find({ body: request })
 
       if (!user) {
-        ctx.body = 'incorrect username/password'
+        ctx.body = 'Incorrect username/password'
         ctx.status = 404
         return
       }
 
-      if (user) {
-        ctx.body = user.id
+      if (user) { 
+        const { password, ...others } = user
+        ctx.body = others
       }
     } catch (error) {
       ctx.body = error
